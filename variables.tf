@@ -148,10 +148,10 @@ variable "efs_access_point_arn" {
 variable "efs_local_mount_path" {
   type        = string
   description = "(Optional) Local mount path of the EFS filesystem. Must start with `/mnt/`"
-  default     = null
+  default     = ""
 
   validation {
-    condition = var.efs_local_mount_path == null || (length(try(var.efs_local_mount_path, "")) >= 5 && substr(try(var.efs_local_mount_path, ""), 0, 5) == "/mnt/")
+    condition = var.efs_local_mount_path == "" || (var.efs_local_mount_path >= 5 && substr(var.efs_local_mount_path, 0, 5) == "/mnt/")
     error_message = "Must start with `/mnt/` ."
   }
 

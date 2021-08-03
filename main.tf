@@ -41,12 +41,13 @@ resource "random_id" "id" {
 }
 
 locals {
-  lambda_name_prefix = var.lambda_name_prefix != null && var.lambda_name_prefix != "" ? var.lambda_name_prefix : "function"
-  current_id         = var.local_id != null && var.local_id != "" ? var.local_id : random_id.id.hex
-  lambda_name        = var.use_id ? "${local.lambda_name_prefix}-${local.current_id}" : local.lambda_name_prefix
-  log_group_name = "/aws/lambda/${local.lambda_name}"
-  log_group_arn = "arn:${data.aws_partition.current.partition}:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:${local.log_group_name}"
-  has_filesystem     = var.efs_access_point_arn != null && var.efs_access_point_arn != "" && var.efs_local_mount_path != null && var.efs_local_mount_path != ""
+  lambda_name_prefix   = var.lambda_name_prefix != null && var.lambda_name_prefix != "" ? var.lambda_name_prefix : "function"
+  current_id           = var.local_id != null && var.local_id != "" ? var.local_id : random_id.id.hex
+  lambda_name          = var.use_id ? "${local.lambda_name_prefix}-${local.current_id}" : local.lambda_name_prefix
+  log_group_name       = "/aws/lambda/${local.lambda_name}"
+  log_group_arn        = "arn:${data.aws_partition.current.partition}:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:${local.log_group_name}"
+  has_filesystem       = var.efs_access_point_arn != null && var.efs_access_point_arn != "" && var.efs_local_mount_path != null && var.efs_local_mount_path != ""
+  efs_local_mount_path = var.efs_local_mount_path == "" ? null : var.efs_local_mount_path
 }
 
 resource "aws_cloudwatch_log_group" "this" {
@@ -127,7 +128,7 @@ resource "aws_lambda_function" "this" {
     for_each = local.has_filesystem ? [1] : []
     content {
       arn              = var.efs_access_point_arn
-      local_mount_path = var.efs_local_mount_path
+      local_mount_path = local.efs_local_mount_path
     }
   }
 

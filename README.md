@@ -52,7 +52,7 @@ module "example" {
 |------|-------------|------|---------|:--------:|
 | <a name="input_ecr_namespace"></a> [ecr\_namespace](#input\_ecr\_namespace) | (Optional) A namespace prefixed to the ECR repository name, e.g. 'my-namespace' in my-namespace/my-repo | `string` | `null` | no |
 | <a name="input_efs_access_point_arn"></a> [efs\_access\_point\_arn](#input\_efs\_access\_point\_arn) | (Optional) ARN of EFS access point | `string` | `null` | no |
-| <a name="input_efs_local_mount_path"></a> [efs\_local\_mount\_path](#input\_efs\_local\_mount\_path) | (Optional) Local mount path of the EFS filesystem. Must start with `/mnt/` | `string` | `null` | no |
+| <a name="input_efs_local_mount_path"></a> [efs\_local\_mount\_path](#input\_efs\_local\_mount\_path) | (Optional) Local mount path of the EFS filesystem. Must start with `/mnt/` | `string` | `""` | no |
 | <a name="input_hash_script"></a> [hash\_script](#input\_hash\_script) | (Optional) Path to a custom script to generate a hash of source contents | `string` | `""` | no |
 | <a name="input_image_default_tag"></a> [image\_default\_tag](#input\_image\_default\_tag) | Default tag to use for the container image | `string` | `"latest"` | no |
 | <a name="input_image_suffix"></a> [image\_suffix](#input\_image\_suffix) | Suffix used to name the container image, e.g. 'my-repo' in my-namespace/my-repo | `string` | n/a | yes |
