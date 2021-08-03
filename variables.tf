@@ -151,7 +151,7 @@ variable "efs_local_mount_path" {
   default     = null
 
   validation {
-    condition = var.efs_local_mount_path == null || (length(var.efs_local_mount_path) >= 5 && substr(var.efs_local_mount_path, 0, 5) == "/mnt/")
+    condition = var.efs_local_mount_path == null || (length(var.efs_local_mount_path) >= 5 && substr(try(var.efs_local_mount_path, ""), 0, 5) == "/mnt/")
     error_message = "Must start with `/mnt/` ."
   }
 
