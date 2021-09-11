@@ -14,16 +14,6 @@ terraform {
       version = ">= 3.46.0"
     }
 
-    external = {
-      source  = "hashicorp/external"
-      version = ">= 2.1.0"
-    }
-
-    null = {
-      source  = "hashicorp/null"
-      version = ">= 3.1.0"
-    }
-
     random = {
       source  = "hashicorp/random"
       version = ">= 3.1.0"
@@ -48,6 +38,11 @@ locals {
   log_group_arn        = "arn:${data.aws_partition.current.partition}:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:${local.log_group_name}"
   has_filesystem       = var.efs_access_point_arn != null && var.efs_access_point_arn != "" && var.efs_local_mount_path != null && var.efs_local_mount_path != ""
   efs_local_mount_path = var.efs_local_mount_path == "" ? null : var.efs_local_mount_path
+
+}
+
+module "ecr_image" {
+  count = var.lambda
 }
 
 resource "aws_cloudwatch_log_group" "this" {
@@ -117,7 +112,7 @@ resource "aws_lambda_function" "this" {
   role          = aws_iam_role.lambda_exec.arn
   description   = var.lambda_description
   package_type  = "Image"
-  image_uri     = "${aws_ecr_repository.this.repository_url}:${local.hash}"
+  image_uri     = var.lambda_image_uri
   timeout       = var.lambda_timeout
   memory_size   = var.lambda_memory_size
   kms_key_arn   = var.lambda_kms_key_arn
@@ -138,7 +133,6 @@ resource "aws_lambda_function" "this" {
   }
 
   depends_on = [
-    null_resource.push,
     aws_cloudwatch_log_group.this,
     aws_iam_role_policy_attachment.this
   ]
