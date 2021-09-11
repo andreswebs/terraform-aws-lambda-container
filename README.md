@@ -22,9 +22,7 @@ Example:
 ```hcl
 module "example" {
   source             = "github.com/andreswebs/terraform-aws-lambda-container"
-  ecr_namespace      = "my-images"
-  image_suffix       = "example-lambda" ## --> this will create my-images/example-lambda in ECR
-  lambda_source_path = "path/to/your/lambda/code" ## --> must have a Dockerfile
+  lambda_image_uri   = var.lambda_image_uri
   lambda_name_prefix = "example-lambda"
   lambda_description = "Does things"
 
@@ -42,6 +40,7 @@ module "example" {
   }
 
 }
+
 ```
 
 
