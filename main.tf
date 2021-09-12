@@ -38,11 +38,22 @@ locals {
   log_group_arn        = "arn:${data.aws_partition.current.partition}:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:${local.log_group_name}"
   has_filesystem       = var.efs_access_point_arn != null && var.efs_access_point_arn != "" && var.efs_local_mount_path != null && var.efs_local_mount_path != ""
   efs_local_mount_path = var.efs_local_mount_path == "" ? null : var.efs_local_mount_path
-
+  create_image         = var.lambda_image_uri == "" || var.lambda_image_uri == null
 }
 
 module "ecr_image" {
-  count = var.lambda
+  count                = local.create_image ? 1 : 0
+  source               = "andreswebs/ecr-image/aws"
+  version              = "1.0.0"
+  ecr_namespace        = var.ecr_namespace
+  image_suffix         = var.image_suffix
+  image_default_tag    = var.image_default_tag
+  image_source_path    = var.lambda_source_path
+  image_tag_mutability = var.image_tag_mutability
+  scan_on_push         = var.scan_on_push
+  lifecycle_policy     = var.lifecycle_policy
+  hash_script          = var.hash_script
+  push_script          = var.push_script
 }
 
 resource "aws_cloudwatch_log_group" "this" {
@@ -107,12 +118,16 @@ resource "aws_iam_role_policy_attachment" "this" {
   policy_arn = each.value
 }
 
+locals {
+  lambda_image_uri = local.create_image ? module.ecr_image[0].image_uri : var.lambda_image_uri
+}
+
 resource "aws_lambda_function" "this" {
   function_name = local.lambda_name
   role          = aws_iam_role.lambda_exec.arn
   description   = var.lambda_description
   package_type  = "Image"
-  image_uri     = var.lambda_image_uri
+  image_uri     = local.lambda_image_uri
   timeout       = var.lambda_timeout
   memory_size   = var.lambda_memory_size
   kms_key_arn   = var.lambda_kms_key_arn
@@ -142,4 +157,3 @@ resource "aws_lambda_function" "this" {
   }
 
 }
-
