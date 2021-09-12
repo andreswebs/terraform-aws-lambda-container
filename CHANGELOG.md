@@ -11,9 +11,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Optional variable `lambda_image_uri`
 - Conditional dependency on [andreswebs/ecr-image/aws](https://registry.terraform.io/modules/andreswebs/ecr-image/aws/latest)
 
-### Changed
-- 
-
 ### Removed
 - ECR registry creation
 - Scripts for pushing the image to ECR
@@ -25,3 +22,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial module configuration
 
 [2.0.0]: https://github.com/andreswebs/terraform-aws-lambda-container/compare/1.0.0...2.0.0
+
+[1.0.0]: "#"

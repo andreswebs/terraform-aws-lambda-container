@@ -1,9 +1,7 @@
 /**
-*
-* Creates an ECR repository, pushes a container image for AWS Lambda, and creates a Lambda function from the image, with an associated Log Group and IAM Role.
+* Creates a Lambda function from an appropriate container image (from AWS ECR), with an associated Log Group and IAM Role.
 *
 * Other supporting resources, such as event sources for the Lambda function, must be integrated separately with the Lambda function through the module outputs.
-* 
 */
 
 terraform {

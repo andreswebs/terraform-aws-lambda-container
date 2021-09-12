@@ -17,8 +17,9 @@ variable "lambda_image_uri" {
 }
 
 variable "lambda_log_retention_in_days" {
-  type    = number
-  default = 14
+  type        = number
+  description = "Lambda log retention period in days"
+  default     = 14
 }
 
 variable "lambda_name_prefix" {
@@ -114,20 +115,20 @@ variable "ecr_namespace" {
 
 variable "image_suffix" {
   type        = string
-  description = "Suffix used to name the container image, e.g. 'my-repo' in my-namespace/my-repo"
+  description = "(Optional) Suffix used to name the container image, e.g. 'my-repo' in my-namespace/my-repo"
   default     = null
 }
 
 variable "image_default_tag" {
   type        = string
-  description = "Default tag to use for the container image"
+  description = "(Optional) Default tag to use for the container image"
   default     = "latest"
 }
 
 variable "image_tag_mutability" {
   type        = string
+  description = "(Optional) Image tag immutability. Must be one of MUTABLE or IMMUTABLE"
   default     = "MUTABLE"
-  description = "Image tag immutability. Must be one of MUTABLE or IMMUTABLE"
 
   validation {
     condition     = can(regex("^MUTABLE|IMMUTABLE$", var.image_tag_mutability))
@@ -144,7 +145,7 @@ variable "scan_on_push" {
 
 variable "lifecycle_policy" {
   type        = string
-  description = "Repository lifecycle policy. A default will be used if not provided"
+  description = "(Optional) Repository lifecycle policy. A default will be used if not provided"
   default     = null
 }
 
@@ -162,6 +163,6 @@ variable "push_script" {
 
 variable "lambda_source_path" {
   type        = string
-  description = "Path to the Lambda source code"
+  description = "(Optional) Path to the Lambda source code"
   default     = null
 }
