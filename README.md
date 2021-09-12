@@ -76,12 +76,10 @@ module "example" {
 
 | Name | Description |
 |------|-------------|
-| <a name="output_ecr_repository"></a> [ecr\_repository](#output\_ecr\_repository) | The AWS ECR Repository resource |
-| <a name="output_image_hash"></a> [image\_hash](#output\_image\_hash) | Hash of the lambda source code, applied as a tag to the container image |
+| <a name="output_image_uri"></a> [image\_uri](#output\_image\_uri) | Lambda image URI |
 | <a name="output_lambda_exec_role"></a> [lambda\_exec\_role](#output\_lambda\_exec\_role) | The AWS Lambda IAM Role resource |
 | <a name="output_lambda_function"></a> [lambda\_function](#output\_lambda\_function) | The AWS Lambda resource |
 | <a name="output_local_id"></a> [local\_id](#output\_local\_id) | Identifier string used as a suffix to name generated resources |
-| <a name="output_repository_url"></a> [repository\_url](#output\_repository\_url) | ECR repository URL |
 
 ## Providers
 
