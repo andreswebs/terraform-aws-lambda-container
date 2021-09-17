@@ -70,7 +70,7 @@ module "example" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_ecr_image"></a> [ecr\_image](#module\_ecr\_image) | andreswebs/ecr-image/aws | 1.0.0 |
+| <a name="module_ecr_image"></a> [ecr\_image](#module\_ecr\_image) | andreswebs/ecr-image/aws | 1.1.0 |
 
 ## Outputs
 

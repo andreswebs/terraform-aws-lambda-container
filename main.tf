@@ -42,7 +42,7 @@ locals {
 module "ecr_image" {
   count                = local.create_image ? 1 : 0
   source               = "andreswebs/ecr-image/aws"
-  version              = "1.0.0"
+  version              = "1.1.0"
   ecr_namespace        = var.ecr_namespace
   image_suffix         = var.image_suffix
   image_default_tag    = var.image_default_tag
