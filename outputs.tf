@@ -17,3 +17,8 @@ output "image_uri" {
   value       = local.lambda_image_uri
   description = "Lambda image URI"
 }
+
+output "log_group" {
+  value = aws_cloudwatch_log_group.this
+  description = "The AWS CloudWatch log group resource"
+}
