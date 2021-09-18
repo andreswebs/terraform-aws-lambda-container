@@ -47,7 +47,7 @@ module "example" {
 | <a name="input_image_suffix"></a> [image\_suffix](#input\_image\_suffix) | (Optional) Suffix used to name the container image, e.g. 'my-repo' in my-namespace/my-repo | `string` | `null` | no |
 | <a name="input_image_tag_mutability"></a> [image\_tag\_mutability](#input\_image\_tag\_mutability) | (Optional) Image tag immutability. Must be one of MUTABLE or IMMUTABLE | `string` | `"MUTABLE"` | no |
 | <a name="input_lambda_description"></a> [lambda\_description](#input\_lambda\_description) | (Optional) Description of the Lambda function | `string` | `""` | no |
-| <a name="input_lambda_env_vars"></a> [lambda\_env\_vars](#input\_lambda\_env\_vars) | Environment variables for the Lambda function | `map(string)` | `{}` | no |
+| <a name="input_lambda_env_vars"></a> [lambda\_env\_vars](#input\_lambda\_env\_vars) | Environment variables for the Lambda function | `map(string)` | `null` | no |
 | <a name="input_lambda_image_uri"></a> [lambda\_image\_uri](#input\_lambda\_image\_uri) | Image URI for the Lambda function | `string` | `""` | no |
 | <a name="input_lambda_kms_key_arn"></a> [lambda\_kms\_key\_arn](#input\_lambda\_kms\_key\_arn) | (Optional) ARN of an AWS KMS key used to encrypt environment variables | `string` | `null` | no |
 | <a name="input_lambda_log_retention_in_days"></a> [lambda\_log\_retention\_in\_days](#input\_lambda\_log\_retention\_in\_days) | Lambda log retention period in days | `number` | `14` | no |

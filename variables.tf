@@ -55,7 +55,7 @@ variable "lambda_reserved_concurrency" {
 variable "lambda_env_vars" {
   type        = map(string)
   description = "Environment variables for the Lambda function"
-  default     = {}
+  default     = null
 }
 
 variable "lambda_role_managed_policies" {
