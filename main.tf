@@ -110,6 +110,12 @@ resource "aws_iam_role_policy" "kms_permissions" {
 
 }
 
+resource "aws_iam_role_policy_attachment" "xray_permissions" {
+  count = var.enable_xray ? 1 : 0
+  role = aws_iam_role.lambda_exec.id
+  policy_arn = "arn:aws:iam::aws:policy/AWSXrayWriteOnlyAccess"
+}
+
 resource "aws_iam_role_policy_attachment" "this" {
   for_each   = toset(var.lambda_role_managed_policies)
   role       = aws_iam_role.lambda_exec.name
@@ -137,6 +143,13 @@ resource "aws_lambda_function" "this" {
     content {
       arn              = var.efs_access_point_arn
       local_mount_path = local.efs_local_mount_path
+    }
+  }
+
+  dynamic "tracing_config" {
+    for_each = var.enable_xray ? [1] : []
+    content {
+      mode = "Active"
     }
   }
 

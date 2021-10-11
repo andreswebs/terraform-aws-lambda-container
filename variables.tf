@@ -166,3 +166,9 @@ variable "lambda_source_path" {
   description = "(Optional) Path to the Lambda source code"
   default     = null
 }
+
+variable "enable_xray" {
+  type = bool
+  description = "(Optional) Enable AWS X-Ray tracing?"
+  default = true
+}

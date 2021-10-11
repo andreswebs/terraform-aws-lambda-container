@@ -42,6 +42,7 @@ module "example" {
 | <a name="input_ecr_namespace"></a> [ecr\_namespace](#input\_ecr\_namespace) | (Optional) A namespace prefixed to the ECR repository name, e.g. 'my-namespace' in my-namespace/my-repo | `string` | `null` | no |
 | <a name="input_efs_access_point_arn"></a> [efs\_access\_point\_arn](#input\_efs\_access\_point\_arn) | (Optional) ARN of EFS access point | `string` | `null` | no |
 | <a name="input_efs_local_mount_path"></a> [efs\_local\_mount\_path](#input\_efs\_local\_mount\_path) | (Optional) Local mount path of the EFS filesystem. Must start with `/mnt/` | `string` | `""` | no |
+| <a name="input_enable_xray"></a> [enable\_xray](#input\_enable\_xray) | (Optional) Enable AWS X-Ray tracing? | `bool` | `true` | no |
 | <a name="input_hash_script"></a> [hash\_script](#input\_hash\_script) | (Optional) Path to a custom script to generate a hash of source contents | `string` | `""` | no |
 | <a name="input_image_default_tag"></a> [image\_default\_tag](#input\_image\_default\_tag) | (Optional) Default tag to use for the container image | `string` | `"latest"` | no |
 | <a name="input_image_suffix"></a> [image\_suffix](#input\_image\_suffix) | (Optional) Suffix used to name the container image, e.g. 'my-repo' in my-namespace/my-repo | `string` | `null` | no |
@@ -105,6 +106,7 @@ module "example" {
 | [aws_iam_role_policy.kms_permissions](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy.lambda_permissions](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy_attachment.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.xray_permissions](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_lambda_function.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function) | resource |
 | [random_id.id](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
