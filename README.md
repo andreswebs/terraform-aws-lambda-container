@@ -1,9 +1,11 @@
 # terraform-aws-lambda-container
 
-[//]: # (BEGIN_TF_DOCS)
 Creates a Lambda function from an appropriate container image (from AWS ECR), with an associated Log Group and IAM Role.
 
 Other supporting resources, such as event sources for the Lambda function, must be integrated separately with the Lambda function through the module outputs.
+
+[//]: # (BEGIN_TF_DOCS)
+
 
 ## Usage
 
@@ -30,7 +32,6 @@ module "example" {
   }
 
 }
-
 ```
 
 
