@@ -118,10 +118,3 @@ No modules.
 ## License
 
 This project is licensed under the [Unlicense](UNLICENSE.md).
-
-
-## Acknowledgements
-
-The code for pushing images to ECR (under `scripts/`) was based on:
-
-<https://github.com/mathspace/terraform-aws-ecr-docker-image>
