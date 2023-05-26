@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [3.0.0] - 2023-05-21
 
 ### Changed
-- Remove optional image creation; `lambda_image_uri` is now required
+- Remove optional image creation; `var.lambda_image_uri` is now required
 
 ## [2.3.0] - 2021-09-17
 

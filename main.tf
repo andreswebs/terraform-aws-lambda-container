@@ -74,7 +74,7 @@ resource "aws_iam_role_policy" "kms_permissions" {
   count  = var.use_kms_key ? 1 : 0
   name   = "kms-permissions"
   role   = aws_iam_role.lambda_exec.id
-  policy = data.aws_iam_policy_document.kms_permissions.json
+  policy = data.aws_iam_policy_document.kms_permissions[0].json
 }
 
 resource "aws_iam_role_policy_attachment" "xray_permissions" {

@@ -67,11 +67,11 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_function"></a> [function](#output\_function) | The AWS Lambda resource |
 | <a name="output_image_uri"></a> [image\_uri](#output\_image\_uri) | Lambda image URI |
-| <a name="output_lambda_exec_role"></a> [lambda\_exec\_role](#output\_lambda\_exec\_role) | The AWS Lambda IAM Role resource |
-| <a name="output_lambda_function"></a> [lambda\_function](#output\_lambda\_function) | The AWS Lambda resource |
 | <a name="output_local_id"></a> [local\_id](#output\_local\_id) | Identifier string used as a suffix to name generated resources |
 | <a name="output_log_group"></a> [log\_group](#output\_log\_group) | The AWS CloudWatch log group resource |
+| <a name="output_role"></a> [role](#output\_role) | The AWS Lambda IAM Role resource |
 
 ## Providers
 

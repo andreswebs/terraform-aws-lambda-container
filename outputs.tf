@@ -1,9 +1,9 @@
-output "lambda_function" {
+output "function" {
   value       = aws_lambda_function.this
   description = "The AWS Lambda resource"
 }
 
-output "lambda_exec_role" {
+output "role" {
   value       = aws_iam_role.lambda_exec
   description = "The AWS Lambda IAM Role resource"
 }
@@ -14,7 +14,7 @@ output "local_id" {
 }
 
 output "image_uri" {
-  value       = local.lambda_image_uri
+  value       = var.lambda_image_uri
   description = "Lambda image URI"
 }
 
