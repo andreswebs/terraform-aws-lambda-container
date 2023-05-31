@@ -83,6 +83,12 @@ resource "aws_iam_role_policy_attachment" "xray_permissions" {
   policy_arn = "arn:aws:iam::aws:policy/AWSXrayWriteOnlyAccess"
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_insights" {
+  count      = var.enable_lambda_insights ? 1 : 0
+  role       = aws_iam_role.lambda_exec.id
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchLambdaInsightsExecutionRolePolicy"
+}
+
 resource "aws_iam_role_policy_attachment" "this" {
   for_each   = toset(var.lambda_role_managed_policies)
   role       = aws_iam_role.lambda_exec.name

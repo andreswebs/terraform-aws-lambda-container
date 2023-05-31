@@ -110,3 +110,9 @@ variable "enable_xray" {
   description = "(Optional) Enable AWS X-Ray tracing?"
   default = true
 }
+
+variable "enable_lambda_insights" {
+  type = bool
+  description = "(Optional) Enable AWS CloudWatch Lambda Insights?"
+  default = true
+}

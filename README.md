@@ -42,6 +42,7 @@ module "example" {
 |------|-------------|------|---------|:--------:|
 | <a name="input_efs_access_point_arn"></a> [efs\_access\_point\_arn](#input\_efs\_access\_point\_arn) | (Optional) ARN of EFS access point | `string` | `null` | no |
 | <a name="input_efs_local_mount_path"></a> [efs\_local\_mount\_path](#input\_efs\_local\_mount\_path) | (Optional) Local mount path of the EFS filesystem. Must start with `/mnt/` | `string` | `""` | no |
+| <a name="input_enable_lambda_insights"></a> [enable\_lambda\_insights](#input\_enable\_lambda\_insights) | (Optional) Enable AWS CloudWatch Lambda Insights? | `bool` | `true` | no |
 | <a name="input_enable_xray"></a> [enable\_xray](#input\_enable\_xray) | (Optional) Enable AWS X-Ray tracing? | `bool` | `true` | no |
 | <a name="input_lambda_description"></a> [lambda\_description](#input\_lambda\_description) | (Optional) Description of the Lambda function | `string` | `""` | no |
 | <a name="input_lambda_env_vars"></a> [lambda\_env\_vars](#input\_lambda\_env\_vars) | Environment variables for the Lambda function | `map(string)` | `null` | no |
@@ -96,6 +97,7 @@ No modules.
 | [aws_iam_role.lambda_exec](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy.kms_permissions](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy.lambda_permissions](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy_attachment.lambda_insights](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.xray_permissions](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_lambda_function.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function) | resource |
