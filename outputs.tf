@@ -1,5 +1,5 @@
 output "function" {
-  value       = aws_lambda_function.this
+  value       = var.create_lambda ? aws_lambda_function.this[0] : null
   description = "The AWS Lambda resource"
 }
 

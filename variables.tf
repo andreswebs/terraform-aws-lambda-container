@@ -106,13 +106,19 @@ variable "efs_local_mount_path" {
 }
 
 variable "enable_xray" {
-  type = bool
+  type        = bool
   description = "(Optional) Enable AWS X-Ray tracing?"
-  default = true
+  default     = true
 }
 
 variable "enable_lambda_insights" {
-  type = bool
+  type        = bool
   description = "(Optional) Enable AWS CloudWatch Lambda Insights?"
-  default = true
+  default     = true
+}
+
+variable "create_lambda" {
+  type        = bool
+  description = "Create the lambda function?"
+  default     = true
 }

@@ -96,6 +96,7 @@ resource "aws_iam_role_policy_attachment" "this" {
 }
 
 resource "aws_lambda_function" "this" {
+  count         = var.create_lambda ? 1 : 0
   function_name = local.lambda_name
   role          = aws_iam_role.lambda_exec.arn
   description   = var.lambda_description
